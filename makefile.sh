@@ -26,7 +26,7 @@ echo -ne "\xDE\xC0\xDE\xC0\x00\x00\x00\x00" | dd of="$3" bs=1 seek=0 conv=notrun
 echo -ne "KERNELY" | dd of="$3" bs=1 seek=8 conv=notrunc,noerror
 echo -ne "INITCPIO" | dd of="$3" bs=1 seek=16 conv=notrunc,noerror
 
-dd if="code.text" of="$3" bs=1 seek=512 conv=notrunc,noerror
+dd if="code.text" of="$3" bs=512 seek=1 conv=notrunc,noerror
 
-dd if="$1" of="$3" bs=1 seek=4096 conv=notrunc,noerror
-dd if="$2" of="$3" bs=1 seek=33554432 conv=notrunc,noerror
+dd if="$1" of="$3" bs=512 seek=8 conv=notrunc,noerror
+dd if="$2" of="$3" bs=512 seek=65536 conv=notrunc,noerror
