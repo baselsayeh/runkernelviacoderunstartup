@@ -42,7 +42,7 @@ skip_kernel:
 	mov x9, 0x2000000 //skip 32 MB
 	add x0, x22, x9
 	mov x3, ramdiskstart
-	mov x2, 0x800000 //size 8 MB
+	mov x2, 0x1000000 //size 16 MB
 	add x2, x0, x2
 .L2:
 	ldr x4, [x0]
