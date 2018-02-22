@@ -23,10 +23,10 @@ _start:
 	mov x2, 0x1E00000 //size 30 MB
 	add x2, x0, x2
 .L1:
-	ldrb w1, [x0]
-	strb w1, [x3]
-	add x0, x0, 1
-	add x3, x3, 1
+	ldr x4, [x0]
+	str x4, [x3]
+	add x0, x0, 8
+	add x3, x3, 8
 	cmp x0, x2
 	bne .L1
 
@@ -45,10 +45,10 @@ skip_kernel:
 	mov x2, 0x800000 //size 8 MB
 	add x2, x0, x2
 .L2:
-	ldrb w1, [x0]
-	strb w1, [x3]
-	add x0, x0, 1
-	add x3, x3, 1
+	ldr x4, [x0]
+	str x4, [x3]
+	add x0, x0, 8
+	add x3, x3, 8
 	cmp x0, x2
 	bne .L2
 
