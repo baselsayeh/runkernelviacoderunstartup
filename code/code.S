@@ -11,7 +11,7 @@ _start:
 	mov x23, x0 //preserve dtb
 
 	/* Check coderun page for kernel */
-	add x9, x21, #8
+	add x9, x22, #8
 	ldr	x10, [x9]
 	cmp	x10, xzr
 	beq	skip_kernel
