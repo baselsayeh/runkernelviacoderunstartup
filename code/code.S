@@ -1,6 +1,11 @@
 
-#define kernelstart 0x480000
+#define kernelstart  0x480000
+#define kernelsize   0x1E00000 //size 30 MB
+#define kernelskip   4096      //skip 4 KB
+
 #define ramdiskstart 0x8000000
+#define ramdisksize  0x1000000 //size 16 MB
+#define ramdiskskip  0x2000000 //skip 32 MB
 
 .section .text
 .global _start
@@ -17,10 +22,10 @@ _start:
 	beq	skip_kernel
 	//
 
-	mov x9, 4096 //skip 4 KB
+	mov x9, kernelskip
 	add x0, x22, x9
 	mov x3, kernelstart
-	mov x2, 0x1E00000 //size 30 MB
+	mov x2, kernelsize
 	add x2, x0, x2
 .L1:
 	ldr x4, [x0]
@@ -39,10 +44,10 @@ skip_kernel:
 	beq	skip_ramdisk
 	//
 
-	mov x9, 0x2000000 //skip 32 MB
+	mov x9, ramdiskskip
 	add x0, x22, x9
 	mov x3, ramdiskstart
-	mov x2, 0x1000000 //size 16 MB
+	mov x2, ramdisksize
 	add x2, x0, x2
 .L2:
 	ldr x4, [x0]
